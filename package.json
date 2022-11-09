@@ -1,25 +1,25 @@
 {
-  "name": "heroku-cra-node",
-  "version": "3.0.0",
-  "description": "How to use create-react-app with a custom Node API on Heroku",
-  "engines": {
-    "node": "10.x"
-  },
-  "scripts": {
-    "start": "node api",
-    "build": "cd frontend/ && npm install && npm run build && npm run start",
-    "client": “cd api/ && npm start",
-    "server": “cd server && npm start",
-    "dev": “concurrently \"npm run server\" \"npm run client\""
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "create-react-app",
-    "react"
-  ],
-  "license": "MIT",
-  "devDependencies": {
+  "name": "crud-react-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
     "concurrently": "^7.5.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "server": "npm start --prefix api",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielfeliphe/CRUD-React-NodeJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielfeliphe/CRUD-React-NodeJs/issues"
+  },
+  "homepage": "https://github.com/gabrielfeliphe/CRUD-React-NodeJs#readme"
 }
