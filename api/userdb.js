@@ -13,9 +13,9 @@ getUser = async function () {
     });
 }
 
-insertUser = async function (email,senha,cep) {
+insertUser = async function (email, endereco, telefone, cnpj, cidade, nome) {
     return new Promise((resolve, reject) => {
-        connection.query(`INSERT INTO usuarios(email,senha,cep) VALUES ('${email}','${senha}','${cep}')`, (err, res) => {
+        connection.query(`INSERT INTO usuarios(email,endereco,telefone,cnpj,cidade,nome) VALUES ('${email}','${endereco}','${telefone}','${cnpj}','${cidade}','${nome}')`, (err, res) => {
             if (err) {
                 reject(err);
             }
@@ -24,9 +24,9 @@ insertUser = async function (email,senha,cep) {
     });
 }
 
-deleteUser = async function (email) {
+deleteUser = async function (id) {
     return new Promise((resolve, reject) => {
-        connection.query(`DELETE FROM usuarios WHERE email = '${email}'`, (err, res) => {
+        connection.query(`DELETE FROM usuarios WHERE ID = '${id}'`, (err, res) => {
             if (err) {
                 reject(err);
             }
@@ -35,9 +35,9 @@ deleteUser = async function (email) {
     });
 }
 
-updateUser = async function (email,senha,cep,id) {
+updateUser = async function (email, endereco, telefone, cnpj, cidade, nome, id) {
     return new Promise((resolve, reject) => {
-        connection.query(`UPDATE usuarios SET email = '${email}', senha = '${senha}', cep = '${cep}' WHERE ID = ${id}`, (err, res) => {
+        connection.query(`UPDATE usuarios SET email = '${email}', endereco = '${endereco}', telefone = '${telefone}', cnpj = '${cnpj}', cidade = '${cidade}', nome = '${nome}' WHERE ID = ${id}`, (err, res) => {
             if (err) {
                 reject(err);
             }
