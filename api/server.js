@@ -16,26 +16,25 @@ app.listen(port , () =>
 
 app.post('/InsertUser', async function(request, response){
  
-  dbToken = await database.insertUser(request.body.email,request.body.senha,request.body.cep);
-  response.status(200).json("funciona");
+  dbRetorno = await database.insertUser(request.body.email,request.body.senha,request.body.cep);
+  response.status(200).json(dbRetorno);
 } )
 
 app.post('/DeleteUser', async function(request, response){
  
-  dbToken = await database.deleteUser(request.body.email);
-  response.status(200).json("funciona");
+  dbRetorno = await database.deleteUser(request.body.email);
+  response.status(200).json(dbRetorno);
 } )
 
 app.post('/UpdateUser', async function(request, response){
  
-  dbToken = await database.updateUser(request.body.email,request.body.senha,request.body.cep);
-  response.status(200).json("funciona");
+  dbRetorno = await database.updateUser(request.body.email,request.body.senha,request.body.cep,request.body.id);
+  response.status(200).json(dbRetorno);
 } )
 
 app.get('/GetUser', async function(request, response){
  
-  dbToken = await database.getUser();
-  console.log(dbToken)
-  response.status(200).json(dbToken);
+  dbRetorno = await database.getUser();
+  response.status(200).json(dbRetorno);
 } )
 
