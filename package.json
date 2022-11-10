@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
+  "private": "true",
+  "workspaces": {
+    "packages": [
+      "api",
+      "frontend"
+    ]
+  },
+  "devDependencies": {
     "concurrently": "^7.5.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "server": "npm start --prefix api",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "yarn workspace api start",
+    "dev": "concurrently \"yarn workspace frontend start\"  \"yarn workspace api start\""
   },
   "repository": {
     "type": "git",

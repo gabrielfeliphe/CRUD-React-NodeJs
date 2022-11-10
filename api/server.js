@@ -4,15 +4,21 @@ const express = require('express')
 
 const database = require('./userdb.js');
 
+const path = require('path');
+
 const app = express()
 
-app.use(express.json())
+app.use(express.static(path.join(__dirname, '../frontend/build')),express.json());
 
 var port = process.env.PORT || 5000
 
 app.listen(port, () =>
   console.log(`Example app listening on port ${port}!`),
 );
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 
 app.post('/InsertUser', async function (request, response) {
 
