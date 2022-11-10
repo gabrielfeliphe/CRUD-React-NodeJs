@@ -14,7 +14,8 @@
     "concurrently": "^7.5.0"
   },
   "scripts": {
-    "start": "concurrently \"yarn workspace api start\"  \"yarn workspace frontend start\""
+    "start": "yarn workspace api start",
+    "dev": "concurrently \"yarn workspace frontend start\"  \"yarn workspace api start\""
   },
   "repository": {
     "type": "git",
