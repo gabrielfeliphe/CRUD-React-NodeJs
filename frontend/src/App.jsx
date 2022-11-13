@@ -3,12 +3,12 @@ import "./app.css";
 import FormInput from "./components/FormInput";
 
 const App = () => {
-  const [values, setValues] = useState({
-    username: "",
+  let [values, setValues] = useState({
+    nomeCliente: "",
     email: "",
-    birthday: "",
-    password: "",
-    confirmPassword: "",
+    telefone: "",
+    cnpj: "",
+    endereco: "",
   });
 
   const inputs = [
@@ -34,14 +34,14 @@ const App = () => {
     },
     {
       id: 3,
-      name: "Telefone",
+      name: "telefone",
       type: "text",
       placeholder: "Digite Aqui...",
       label: "Telefone",
     },
     {
       id: 4,
-      name: "CNPJ",
+      name: "cnpj",
       type: "text",
       placeholder: "Digite Aqui...",
       errorMessage:
@@ -51,19 +51,39 @@ const App = () => {
     },
     {
       id: 5,
-      name: "Endereco",
-      type: "password",
+      name: "endereco",
+      type: "text",
       placeholder: "Digite Aqui...",
       label: "Endereço",
-    },
+    }
   ];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    console.log(values)
+  };
+
+  let handleSubmit = async (e) => {
+   e.preventDefault();
+    try {
+        await fetch("/InsertUser", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: values.nomeCliente,
+          email: values.email,
+          telefone: values.telefone,
+          endereco: values.endereco,
+          cidade: values.cidade,
+          cnpj: values.cnpj,
+        }),
+      }).then(response => response.text()).then(t => console.log("rodou"))
+      this.setValues("");
+    } catch (err) {
+      console.log(err);
+    }
+
   };
 
   return (
