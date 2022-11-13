@@ -1,4 +1,4 @@
-import "./app.css";
+import "./style/app.css";
 import { useState } from "react";
 import FormInput from "./components/FormInput";
 
