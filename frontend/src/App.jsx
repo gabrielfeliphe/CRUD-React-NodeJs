@@ -1,15 +1,18 @@
+import "./style/app.css";
 import { useState } from "react";
-import "./app.css";
 import FormInput from "./components/FormInput";
 
 const App = () => {
-  let [values, setValues] = useState({
+
+  const initialState= {
     nomeCliente: "",
     email: "",
     telefone: "",
     cnpj: "",
     endereco: "",
-  });
+  }
+
+  let [values, setValues] = useState(initialState);
 
   const inputs = [
     {
@@ -18,7 +21,7 @@ const App = () => {
       type: "text",
       placeholder: "Digite Aqui...",
       errorMessage:
-        "Digite seu nome compleot",
+        "Digite seu nome completo",
       label: "Nome do Cliente",
       pattern: "^[A-Za-z0-9]{3,16}$",
       required: true,
@@ -47,6 +50,7 @@ const App = () => {
       errorMessage:
         "Digite o CNPJ",
       label: "CNPJ",
+      pattern: "[0-9]{14}",
       required: true,
     },
     {
@@ -59,13 +63,12 @@ const App = () => {
   ];
 
 
-  const onChange = (e) => {
+  const onChange = async(e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
     console.log(values)
   };
 
   let handleSubmit = async (e) => {
-   e.preventDefault();
     try {
         await fetch("/InsertUser", {
         method: "POST",
@@ -79,7 +82,7 @@ const App = () => {
           cnpj: values.cnpj,
         }),
       }).then(response => response.text()).then(t => console.log("rodou"))
-      this.setValues("");
+     setValues(initialState)
     } catch (err) {
       console.log(err);
     }
@@ -98,7 +101,7 @@ const App = () => {
             onChange={onChange}
           />
         ))}
-        <button>Cadastrar</button>
+        <button type="submit">Cadastrar</button>
       </form>
     </div>
   );
