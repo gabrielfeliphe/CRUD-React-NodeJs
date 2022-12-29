@@ -8,4 +8,4 @@ A ideia da aplicação de CRUD é permitir ao usuário realizar operações bás
 
 O projeto é dividido em duas partes: a API (que fica na pasta "api") e a interface web (que fica na pasta "web"). A API é responsável por gerenciar os dados da aplicação, enquanto a interface web é responsável por exibir os dados para o usuário e permitir que ele realize as operações de CRUD.
 
-A API é construída com o Node.js e utiliza o framework Express para lidar com as requisições HTTP. Ela também utiliza o DynamoDB como banco de dados para armazenar os dados da aplicação. O DynamoDB é um serviço de banco de dados NoSQL da Amazon Web Services (AWS) que oferece alta escalabilidade, desempenho e disponibilidade. A interface web é construída com o React e se comunica com a API através de requisições HTTP para realizar as operações de CRUD.
+A API é construída com o Node.js e utiliza o framework Express para lidar com as requisições HTTP. Ela também utiliza o PLANETSCALE como banco de dados para armazenar os dados da aplicação.
